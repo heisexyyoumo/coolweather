@@ -4,6 +4,7 @@ package com.example.heiseyoumo.coolweather.db;
  * 县的实体类
  */
 
+import org.litepal.crud.DataSupport;
 import org.litepal.crud.LitePalSupport;
 
 public class County extends LitePalSupport {

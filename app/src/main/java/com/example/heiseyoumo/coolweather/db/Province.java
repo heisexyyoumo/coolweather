@@ -3,6 +3,7 @@ package com.example.heiseyoumo.coolweather.db;
 /**
  *  省的实体类
  */
+import org.litepal.crud.DataSupport;
 import org.litepal.crud.LitePalSupport;
 
 public class Province extends LitePalSupport {

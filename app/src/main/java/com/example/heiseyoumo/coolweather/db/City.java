@@ -4,6 +4,7 @@ package com.example.heiseyoumo.coolweather.db;
  * 市的实体类
  */
 
+import org.litepal.crud.DataSupport;
 import org.litepal.crud.LitePalSupport;
 
 public class City extends LitePalSupport {
