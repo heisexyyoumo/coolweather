@@ -1,5 +1,6 @@
 package com.example.heiseyoumo.coolweather.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.example.heiseyoumo.coolweather.R;
 import com.example.heiseyoumo.coolweather.entity.Forecast;
 import com.example.heiseyoumo.coolweather.entity.Weather;
+import com.example.heiseyoumo.coolweather.service.AutoUpdateService;
 import com.example.heiseyoumo.coolweather.util.JsonUtil;
 import com.example.heiseyoumo.coolweather.util.LogUtil;
 import com.kymjs.rxvolley.RxVolley;
@@ -266,6 +268,9 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         sv_weather.setVisibility(View.VISIBLE);
+
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
 
     }
 }
