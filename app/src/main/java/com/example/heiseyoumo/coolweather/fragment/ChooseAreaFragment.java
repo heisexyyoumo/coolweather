@@ -7,6 +7,7 @@ package com.example.heiseyoumo.coolweather.fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,6 +26,7 @@ import com.example.heiseyoumo.coolweather.R;
 import com.example.heiseyoumo.coolweather.db.City;
 import com.example.heiseyoumo.coolweather.db.County;
 import com.example.heiseyoumo.coolweather.db.Province;
+import com.example.heiseyoumo.coolweather.ui.WeatherActivity;
 import com.example.heiseyoumo.coolweather.util.JsonUtil;
 import com.example.heiseyoumo.coolweather.util.LogUtil;
 import com.kymjs.rxvolley.RxVolley;
@@ -95,6 +97,13 @@ public class ChooseAreaFragment extends Fragment {
                 }else if (currentLevel == LEVEL_CITY){
                     selectedCity = cityList.get(position);
                     queryCounties();
+                }else if (currentLevel == LEVEL_COUNTY){
+                    //如果当前级别是LEVEL_COUNTY就启动WeatherActivity，并把县的天气id传过去
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id",weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
@@ -155,6 +164,7 @@ public class ChooseAreaFragment extends Fragment {
             queryFromServer(url,"city");
         }
     }
+
     //查询市内所有的县，优先从数据库查询，如果没有在去服务器上查询
     private void queryCounties() {
         tv_title.setText(selectedCity.getCityName());
@@ -226,6 +236,7 @@ public class ChooseAreaFragment extends Fragment {
             }
         });
     }
+
     //显示进度对话框
     private void showProgressDialog() {
         if (progressDialog == null){
@@ -235,6 +246,7 @@ public class ChooseAreaFragment extends Fragment {
         }
         progressDialog.show();
     }
+
     //关闭进度对话框
     private void closeProgressDialog() {
         if (progressDialog != null){
