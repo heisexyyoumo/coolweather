@@ -121,12 +121,13 @@ public class JsonUtil {
 
             JSONObject jsonObjectResult = jsonArray.getJSONObject(0);
 
-            //解析basic
+            //解析status
             weather.setStatus(jsonObjectResult.getString("status"));
 
             //解析basic
             JSONObject jsonBasic = (JSONObject)jsonObjectResult.get("basic");
             weather.setCityName(jsonBasic.getString("city"));
+            weather.setCityWeatherId(jsonBasic.getString("id"));
 
             //解析update
             JSONObject jsonUpdate = (JSONObject)jsonObjectResult.get("update");

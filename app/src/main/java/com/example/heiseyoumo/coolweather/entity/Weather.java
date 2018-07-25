@@ -8,6 +8,9 @@ public class Weather {
     //请求是否成功
     private String status;
 
+    //城市的天气id
+    private String cityWeatherId;
+
     //城市名
     private String cityName;
     //天气预报更新时间
@@ -111,7 +114,12 @@ public class Weather {
         this.status = status;
     }
 
+    public String getCityWeatherId() {
+        return cityWeatherId;
+    }
 
-
+    public void setCityWeatherId(String cityWeatherId) {
+        this.cityWeatherId = cityWeatherId;
+    }
 
 }
